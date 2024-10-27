@@ -9,7 +9,7 @@ const Header = () => {
   const [categories, setCategories] = useState([]);
   const [showCategoreies, setShowCategories] = useState(false);
 
-  const { gf, favorites } = GifState();
+  const { gf, favorites, filter, setFilter } = GifState();
 
   const fetchgifCategories = async () => {
     const { data } = await gf.categories();
@@ -55,18 +55,20 @@ const Header = () => {
 
             </div>)}
 
-          <button><HiBars3BottomRight
-            size={30}
-            className="text-sky-700 block  lg:hidden " /></button></div>
+          <button onClick={() => setShowCategories(!showCategoreies)}>
+            <HiBars3BottomRight
+              size={30}
+              className="text-sky-700 block  lg:hidden " /></button></div>
 
 
         {showCategoreies && (
           <div className="absolute right-0 top-14 mt-7 px-10 pt-6 pb-9 w-full gradient z-20">
-            <span>Categories</span>
-            <hr />
+            <span className="text-3xl font-extrabold">Categories</span>
+            <hr className="bg-gray-100 opacity-50 my-5" />
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
               {categories?.map((category) => {
                 return <Link
+                  onClick={() => setShowCategories(false)}
                   key={category.name}
                   to={`/${category.name_encoded}`}
                   className="font-boldS">{category.name}</Link>
@@ -76,7 +78,7 @@ const Header = () => {
           </div>
         )}
       </div>
-      <GifSearch />
+      <GifSearch filter={filter} setFilter={setFilter} />
     </nav >
   );
 };

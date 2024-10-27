@@ -12,7 +12,7 @@ export default function Home() {
     const fetchTrendingGIFs = async () => {
 
         const { data: gifs } = await gf.trending({
-            limit: 30,
+            limit: 50,
             type: filter,
             rating: "g"
         });
