@@ -26,7 +26,7 @@ const Header = () => {
 
         <Link to="/" className=" flex items-baseline gap-2 mt-2 ml-4">
           <img src={logo} alt="Giphy Logo" className="w-6" />
-          <h1 className=" text-xl mt-2 font-bold tracking-tight cursor-pointer">GIPHY</h1>
+          <h1 className=" text-xl mt-2 font-bold tracking-tight cursor-pointer">GIPHYLe</h1>
         </Link>
 
 
